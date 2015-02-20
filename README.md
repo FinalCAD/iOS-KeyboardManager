@@ -1,14 +1,42 @@
 # Keyboard "Manager" for iOS
-Have you ever been frustated when it comes to manage the keyboard in your iOS app? You know, this addObserver…notification… blablabla
-
-Why such a pain ? 
+Have you ever been frustated when it comes to manage the keyboard in your iOS app?
 
 Well, the "Keyboard" class is made for you.
 
-Keyboard provides the latest infos about the keyboard, like startFrame, endFrame, animationDuration, animationOptions, etc…
+---
+######Keyboard provides some useful infos :
+	
+	var visible: Bool (readonly)
+    var window: UIWindow? (readonly)
+    
+    var startFrame: CGRect? (readonly)
+    func startFrame(inViewController vc: UIViewController) -> CGRect?
+    func startFrame(inView view: UIView?) -> CGRect?
+    
+    var endFrame: CGRect? (readonly)
+    func endFrame(inViewController vc: UIViewController) -> CGRect?
+	func endFrame(inView view: UIView?) -> CGRect?
+    
+    var animationDuration: Double? (readonly)
+    var animationCurve: UIViewAnimationCurve? (readonly)
+    var animationOptions: UIViewAnimationOptions? (readonly)
+    
+######`UIViewController` & `UIPresentationController` are extended to implement these methods :
+	
+	func keyboardWillAppear(animated: Bool)
+	func keyboardDidAppear(animated: Bool)
+	func keyboardWillDisappear(animated: Bool)
+	func keyboardDidDisappear(animated: Bool)
+	
 
-And you know what? It also lets your forget about the notifications process and animating your views!
-
+######And forget about initiating animations, just use `animateAlongsideWithKeyboard()` like this :
+	override func keyboardWillAppear(animated: Bool) {
+        	super.keyboardWillAppear(animated)
+    
+        	self.animateAlongsideWithKeyboard({ keyboard in
+            	// execute your animations here and use the keyboard to get the info you need to update your layout
+        	})
+    	}
 
 
 ##SDK & Language
@@ -16,19 +44,46 @@ And you know what? It also lets your forget about the notifications process and 
 iOS 8.0 / Swift 
 
 
-
-
-
 ##Usage
-First of all, you must enable the module. We extended `UIApplication` so you'll just have to 
-
-Let's imagine a common usage of the keyboard : UIViewController with UITextField(s).
-
-	class MyViewController: UIViewController {
+First of all, you must enable the module. We extended `UIApplication` so you'll just have to do this in your `AppDelegate` :
 	
+	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+	        UIApplication.KeyboardManager.enabled = true
+	        return true
+	    }
+
+Now, let's imagine a common usage of the keyboard : UIViewController with UITextField(s).
+
+	class MyViewController: UIViewController {	
+	    
+	    …
+	    
+	    //MARK: Keyboard Management
+	    
+	    override func keyboardWillAppear(animated: Bool) {
+        	super.keyboardWillAppear(animated)
+    
+        	self.animateAlongsideWithKeyboard({ keyboard in
+            	if let keyboardEndFrame = keyboard.endFrame(inViewController: self) {
+                	self.textFieldsViewBottomConstraint.constant = max(0, self.view.frame.height - keyboardEndFrame.minY)
+                	self.view.layoutIfNeeded()
+            	}
+        	})
+    	}
+    
+    	override func keyboardWillDisappear(animated: Bool) {
+        	super.keyboardWillDisappear(animated)
+        
+        	self.animateAlongsideWithKeyboard({ _ in
+            	self.textFieldsViewBottomConstraint.constant = 0
+            	self.view.layoutIfNeeded()
+        	})
+    	}
+
 	}
 
 
+As you can see, the simplicity comes by the `keyboardWill(Dis)Appear` & `keyboardDid(Dis)Appear` functions, plus the ability to unify your animations using the `animateAlongsideWithKeyboard()` function.
 
 
 #License (MIT)
