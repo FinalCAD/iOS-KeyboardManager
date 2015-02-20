@@ -41,7 +41,7 @@ Well, the "Keyboard" class is made for you.
 
 ##SDK & Language
 
-iOS 8.0 / Swift 
+iOS 8.0 / Swift 1.2
 
 
 ##Usage
