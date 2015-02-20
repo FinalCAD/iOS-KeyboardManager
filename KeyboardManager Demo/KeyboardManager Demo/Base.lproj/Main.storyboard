@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="KeyboardManager_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2kZ-ff-EPJ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F0C-k5-IKx">
+                                <rect key="frame" x="0.0" y="516" width="600" height="84"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qH9-ys-nUK">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="84"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dSj-tH-GLj">
+                                            <rect key="frame" x="8" y="8" width="584" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="1Ka-cl-WLB"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="next"/>
+                                        </textField>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Uuh-ww-vla">
+                                            <rect key="frame" x="8" y="46" width="584" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="BHm-5k-qS6"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="done"/>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="Uuh-ww-vla" firstAttribute="top" secondItem="dSj-tH-GLj" secondAttribute="bottom" constant="8" id="0QK-Sy-tlJ"/>
+                                        <constraint firstItem="Uuh-ww-vla" firstAttribute="leading" secondItem="qH9-ys-nUK" secondAttribute="leading" constant="8" id="1xX-0j-x8r"/>
+                                        <constraint firstAttribute="trailing" secondItem="Uuh-ww-vla" secondAttribute="trailing" constant="8" id="KZc-xl-nud"/>
+                                        <constraint firstItem="dSj-tH-GLj" firstAttribute="top" secondItem="qH9-ys-nUK" secondAttribute="top" constant="8" id="Xk4-fI-nVg"/>
+                                        <constraint firstItem="dSj-tH-GLj" firstAttribute="leading" secondItem="qH9-ys-nUK" secondAttribute="leading" constant="8" id="gCZ-ao-YqO"/>
+                                        <constraint firstAttribute="trailing" secondItem="dSj-tH-GLj" secondAttribute="trailing" constant="8" id="xci-kS-Fgf"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="8sW-I5-onu"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2kZ-ff-EPJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KIP-UF-Jol"/>
+                            <constraint firstAttribute="trailing" secondItem="2kZ-ff-EPJ" secondAttribute="trailing" id="NK5-Wa-tsE"/>
+                            <constraint firstItem="2kZ-ff-EPJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="OY7-S4-fo5"/>
+                            <constraint firstItem="F0C-k5-IKx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RAq-0R-0fC"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2kZ-ff-EPJ" secondAttribute="bottom" id="TJn-WZ-55y"/>
+                            <constraint firstAttribute="trailing" secondItem="F0C-k5-IKx" secondAttribute="trailing" id="TVe-SF-xMq"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="F0C-k5-IKx" secondAttribute="bottom" id="c6C-5k-O88"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionField" destination="Uuh-ww-vla" id="FSw-fK-hqU"/>
+                        <outlet property="textFieldsViewBottomConstraint" destination="c6C-5k-O88" id="IUm-ai-Wgc"/>
+                        <outlet property="titleField" destination="dSj-tH-GLj" id="Y3O-pd-jG3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="363" y="395"/>
+        </scene>
+    </scenes>
+</document>
