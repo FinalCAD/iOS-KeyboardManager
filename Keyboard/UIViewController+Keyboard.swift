@@ -59,5 +59,19 @@ public extension UIViewController {
         UIApplication.sharedApplication().keyboard.animateAlongsideWithKeyboard(animations, completion: completion)
     }
     
+    /// Returns the startFrame of the keyboard inside the view controller's view. This function simply converts the keyboardStartFrame to the view.
+    public func keyboardStartFrameInView() -> CGRect? {
+        if let keyboardStartFrame = UIApplication.sharedApplication().keyboard.startFrame {
+            return self.view.convertRect(keyboardStartFrame, fromView: nil)
+        }
+        return nil
+    }
+    /// Returns the endFrame of the keyboard inside the view controller's view. This function simply converts the keyboardEndFrame to the view.
+    public func keyboardEndFrameInView() -> CGRect? {
+        if let keyboardEndFrame = UIApplication.sharedApplication().keyboard.endFrame {
+            return self.view.convertRect(keyboardEndFrame, fromView: nil)
+        }
+        return nil
+    }
 }
 
