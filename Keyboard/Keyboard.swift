@@ -46,6 +46,9 @@ public class Keyboard {
     /// Indicates if the keyboard is visible on screen or not. This value is set to true upon UIKeyboardWillShowNotification call, and false upon UIKeyboardDidHideNotification call.
     public private(set) var visible: Bool = false
     
+    public private(set) var isBeingPresented: Bool = false
+    public private(set) var isBeingDismissed: Bool = false
+    
     /// Returns the window for the keyboard. Or nil if keyboard is not visible.
     public var window: UIWindow? { return visible == true ? UIApplication.sharedApplication().keyWindow : nil }
    
@@ -144,8 +147,9 @@ public class Keyboard {
     @objc private func keyboardWillShow(n: NSNotification) {
         self.keyboardInfos =  n.userInfo
         self.visible = true
+        self.isBeingPresented = true
         self.canAnimationAlongside = true
-        
+ 
         // Call keyboardWillAppear(animated:) on rootViewController
         self.window?.rootViewController?.keyboardWillAppear(self.animationDuration != nil)
         self.animateAlongsideWithKeyboardIfNeeded()
@@ -154,7 +158,8 @@ public class Keyboard {
     @objc private func keyboardDidShow(n: NSNotification) {
         let didShowKeyboardAnimated = self.animationDuration != nil
         self.keyboardInfos =  n.userInfo
-        
+        self.isBeingPresented = false
+
         for completion in self.alonsideAnimationCompletions { completion(self, finished: true) }
         self.canAnimationAlongside = false
         
@@ -165,8 +170,9 @@ public class Keyboard {
     
     @objc private func keyboardWillHide(n: NSNotification) {
         self.keyboardInfos =  n.userInfo
+        self.isBeingDismissed = true
         self.canAnimationAlongside = true
-        
+    
         // Call keyboardWillDisappear(animated:) on rootViewController
         self.window?.rootViewController?.keyboardWillDisappear(self.animationDuration != nil)
         self.animateAlongsideWithKeyboardIfNeeded()
@@ -176,7 +182,8 @@ public class Keyboard {
         let didHideKeyboardAnimated = self.animationDuration != nil
         self.keyboardInfos =  n.userInfo
         self.visible = false
-        
+        self.isBeingDismissed = false
+
         for completion in self.alonsideAnimationCompletions { completion(self, finished: true) }
         self.canAnimationAlongside = false
    
