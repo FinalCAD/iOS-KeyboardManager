@@ -6,38 +6,41 @@ Well, the "Keyboard" class is made for you.
 ---
 ######Keyboard provides some useful infos :
 	
-	var visible: Bool (readonly)
-    var window: UIWindow? (readonly)
-    
-    var startFrame: CGRect? (readonly)
-    func startFrame(inViewController vc: UIViewController) -> CGRect?
-    func startFrame(inView view: UIView?) -> CGRect?
-    
-    var endFrame: CGRect? (readonly)
-    func endFrame(inViewController vc: UIViewController) -> CGRect?
-	func endFrame(inView view: UIView?) -> CGRect?
-    
-    var animationDuration: Double? (readonly)
-    var animationCurve: UIViewAnimationCurve? (readonly)
-    var animationOptions: UIViewAnimationOptions? (readonly)
-    
+```swift
+var visible: Bool (readonly)
+var window: UIWindow? (readonly)
+
+var startFrame: CGRect? (readonly)
+func startFrame(inViewController vc: UIViewController) -> CGRect?
+func startFrame(inView view: UIView?) -> CGRect?
+
+var endFrame: CGRect? (readonly)
+func endFrame(inViewController vc: UIViewController) -> CGRect?
+func endFrame(inView view: UIView?) -> CGRect?
+
+var animationDuration: Double? (readonly)
+var animationCurve: UIViewAnimationCurve? (readonly)
+var animationOptions: UIViewAnimationOptions? (readonly)
+```
+
 ######`UIViewController` & `UIPresentationController` are extended to implement these methods :
 	
-	func keyboardWillAppear(animated: Bool)
-	func keyboardDidAppear(animated: Bool)
-	func keyboardWillDisappear(animated: Bool)
-	func keyboardDidDisappear(animated: Bool)
-	
+```Swift
+func keyboardWillAppear(animated: Bool)
+func keyboardDidAppear(animated: Bool)
+func keyboardWillDisappear(animated: Bool)
+func keyboardDidDisappear(animated: Bool)
+```
 
 ######And forget about initiating animations, just use `animateAlongsideWithKeyboard()` like this :
-	override func keyboardWillAppear(animated: Bool) {
-        	super.keyboardWillAppear(animated)
-    
-        	self.animateAlongsideWithKeyboard({ keyboard in
-            	// execute your animations here and use the keyboard to get the info you need to update your layout
-        	})
-    	}
-
+```swift
+override func keyboardWillAppear(animated: Bool) {
+	super.keyboardWillAppear(animated)
+	self.animateAlongsideWithKeyboard({ keyboard in
+		// execute your animations here and use the keyboard to get the info you need to update your layout
+	})
+}
+```
 
 ##SDK & Language
 
@@ -46,21 +49,20 @@ iOS 8.0 / Swift 1.2
 
 ##Usage
 First of all, you must enable the module. We extended `UIApplication` so you'll just have to do this in your `AppDelegate` :
-	
-	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-	        UIApplication.KeyboardManager.enabled = true
-	        return true
-	    }
+```swift	
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+	UIApplication.KeyboardManager.enabled = true
+	return true
+}
+```
 
 Now, let's imagine a common usage of the keyboard : UIViewController with UITextField(s).
 
-	class MyViewController: UIViewController {	
+```swift
+class MyViewController: UIViewController {	
 	    
-	    …
-	    
-	    //MARK: Keyboard Management
-	    
-	    override func keyboardWillAppear(animated: Bool) {
+	//MARK: Keyboard Management
+	override func keyboardWillAppear(animated: Bool) {
         	super.keyboardWillAppear(animated)
     
         	self.animateAlongsideWithKeyboard({ keyboard in
@@ -80,8 +82,8 @@ Now, let's imagine a common usage of the keyboard : UIViewController with UIText
         	})
     	}
 
-	}
-
+}
+```
 
 As you can see, the simplicity comes by the `keyboardWill(Dis)Appear` & `keyboardDid(Dis)Appear` functions, plus the ability to unify your animations using the `animateAlongsideWithKeyboard()` function.
 
