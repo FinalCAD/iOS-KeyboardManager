@@ -44,7 +44,7 @@ override func keyboardWillAppear(animated: Bool) {
 
 ##SDK & Language
 
-iOS 8.0 / Swift 1.2
+iOS 8.0 / Swift 1.2 with Xcode 6b2
 
 
 ##Usage
