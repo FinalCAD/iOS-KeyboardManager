@@ -17,7 +17,7 @@ public extension UIApplication {
 
 private let _KeyboardSharedInstance = Keyboard()
 /**
-    A manager built to be used as a shared instance in order to get as much info as possible about the keyboard (if displayed).
+A manager built to be used as a shared instance in order to get as much info as possible about the keyboard (if displayed).
 */
 public class Keyboard {
     private class var sharedKeyboard: Keyboard {
@@ -51,14 +51,14 @@ public class Keyboard {
     
     /// Returns the window for the keyboard. Or nil if keyboard is not visible.
     public var window: UIWindow? { return visible == true ? UIApplication.sharedApplication().keyWindow : nil }
-   
-//    /// Returns the firstResponder. Or nil if keyboard is not visible.
-//    public var firstResponder: UIResponder? { return self.window?.findFirstResponder() }
+    
+    //    /// Returns the firstResponder. Or nil if keyboard is not visible.
+    //    public var firstResponder: UIResponder? { return self.window?.findFirstResponder() }
     
     
     /// The start frame of the keyboard inside its window
-    public var startFrame: CGRect? { return (self.keyboardInfos?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() }
-   
+    public var startFrame: CGRect? { return self.visible ? (self.keyboardInfos?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() : nil }
+    
     /// The start frame of the keyboard inside the given viewController's view
     public func startFrame(inViewController vc: UIViewController) -> CGRect? { return self.startFrame(inView: vc.isViewLoaded() ? vc.view : nil) }
     public func startFrame(inView view: UIView?) -> CGRect? {
@@ -70,8 +70,8 @@ public class Keyboard {
     
     
     /// The end frame of the keyboard inside its window
-    public var endFrame: CGRect? { return (self.keyboardInfos?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() }
-   
+    public var endFrame: CGRect? { return self.visible ? (self.keyboardInfos?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() : nil }
+    
     /// The end frame of the keyboard inside the given viewController's view
     public func endFrame(inViewController vc: UIViewController) -> CGRect? { return self.endFrame(inView: vc.isViewLoaded() ? vc.view : nil) }
     public func endFrame(inView view: UIView?) -> CGRect? {
@@ -80,7 +80,7 @@ public class Keyboard {
         }
         return nil
     }
-
+    
     
     //MARK: - Animation
     public var animationDuration: Double? {
@@ -103,10 +103,10 @@ public class Keyboard {
     }
     
     /**
-        Gives you the opportunity to execute animations alongside with the keyboard.
-        Calling this function outside a keyboardWillShow / keyboardWillHide notification has no effect.
-
-        :returns: True if the animation & completion closures are accepted
+    Gives you the opportunity to execute animations alongside with the keyboard.
+    Calling this function outside a keyboardWillShow / keyboardWillHide notification has no effect.
+    
+    :returns: True if the animation & completion closures are accepted
     */
     public func animateAlongsideWithKeyboard(animations: KeyboardAnimation, completion: KeyboardAnimationCompletion? = nil) -> Bool {
         if self.canAnimationAlongside == true {
@@ -149,7 +149,7 @@ public class Keyboard {
         self.visible = true
         self.isBeingPresented = true
         self.canAnimationAlongside = true
- 
+        
         // Call keyboardWillAppear(animated:) on rootViewController
         self.window?.rootViewController?.keyboardWillAppear(self.animationDuration != nil)
         self.animateAlongsideWithKeyboardIfNeeded()
@@ -159,7 +159,7 @@ public class Keyboard {
         let didShowKeyboardAnimated = self.animationDuration != nil
         self.keyboardInfos =  n.userInfo
         self.isBeingPresented = false
-
+        
         for completion in self.alonsideAnimationCompletions { completion(self, finished: true) }
         self.canAnimationAlongside = false
         
@@ -172,7 +172,7 @@ public class Keyboard {
         self.keyboardInfos =  n.userInfo
         self.isBeingDismissed = true
         self.canAnimationAlongside = true
-    
+        
         // Call keyboardWillDisappear(animated:) on rootViewController
         self.window?.rootViewController?.keyboardWillDisappear(self.animationDuration != nil)
         self.animateAlongsideWithKeyboardIfNeeded()
@@ -183,10 +183,10 @@ public class Keyboard {
         self.keyboardInfos =  n.userInfo
         self.visible = false
         self.isBeingDismissed = false
-
+        
         for completion in self.alonsideAnimationCompletions { completion(self, finished: true) }
         self.canAnimationAlongside = false
-   
+        
         // Call keyboardDidDisappear(animated:) on rootViewController
         self.window?.rootViewController?.keyboardDidDisappear(didHideKeyboardAnimated)
     }
