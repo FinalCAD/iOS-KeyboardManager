@@ -61,14 +61,16 @@ public extension UIViewController {
     
     /// Returns the startFrame of the keyboard inside the view controller's view. This function simply converts the keyboardStartFrame to the view.
     public func keyboardStartFrameInView() -> CGRect? {
-        if let keyboardStartFrame = UIApplication.sharedApplication().keyboard.startFrame {
+        if let keyboardStartFrame = UIApplication.sharedApplication().keyboard.startFrame
+            where self.isBeingDisplayedAsPopover() == false {
             return self.view.convertRect(keyboardStartFrame, fromView: nil)
         }
         return nil
     }
     /// Returns the endFrame of the keyboard inside the view controller's view. This function simply converts the keyboardEndFrame to the view.
     public func keyboardEndFrameInView() -> CGRect? {
-        if let keyboardEndFrame = UIApplication.sharedApplication().keyboard.endFrame {
+        if let keyboardEndFrame = UIApplication.sharedApplication().keyboard.endFrame
+            where self.isBeingDisplayedAsPopover() == false {
             return self.view.convertRect(keyboardEndFrame, fromView: nil)
         }
         return nil
