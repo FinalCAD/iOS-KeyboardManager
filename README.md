@@ -44,7 +44,7 @@ override func keyboardWillAppear(animated: Bool) {
 
 ##SDK & Language
 
-iOS 8.0 / Swift 1.2 with Xcode 6b2
+iOS 8.0 / Swift 1.2 with Xcode 6.3
 
 
 ##Usage
@@ -65,11 +65,9 @@ class MyViewController: UIViewController {
 	override func keyboardWillAppear(animated: Bool) {
         	super.keyboardWillAppear(animated)
     
-        	self.animateAlongsideWithKeyboard({ keyboard in
-            	if let keyboardEndFrame = keyboard.endFrame(inViewController: self) {
-                	self.textFieldsViewBottomConstraint.constant = max(0, self.view.frame.height - keyboardEndFrame.minY)
-                	self.view.layoutIfNeeded()
-            	}
+        	self.animateAlongsideWithKeyboard({ _ in
+                self.textFieldsViewBottomConstraint.constant = self.keyboardBottomLengthInView()
+                self.view.layoutIfNeeded()
         	})
     	}
     
