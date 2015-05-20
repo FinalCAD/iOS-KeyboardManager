@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         super.keyboardWillAppear(animated)
     
         self.animateAlongsideWithKeyboard({ _ in
-            self.textFieldsViewBottomConstraint.constant = self.keyboardBottomLengthInView()
+            self.textFieldsViewBottomConstraint.constant = self.keyboardBottomLayoutGuideLength
             self.view.layoutIfNeeded()
         })
     }
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         super.keyboardWillDisappear(animated)
         
         self.animateAlongsideWithKeyboard({ _ in
-            self.textFieldsViewBottomConstraint.constant = self.keyboardBottomLengthInView()
+            self.textFieldsViewBottomConstraint.constant = self.keyboardBottomLayoutGuideLength
             self.view.layoutIfNeeded()
         })
     }

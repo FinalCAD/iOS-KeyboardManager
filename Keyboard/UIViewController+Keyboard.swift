@@ -60,7 +60,7 @@ public extension UIViewController {
     }
     
     /// Returns the height of the keyboard inside the receiver's view.
-    public func keyboardBottomLengthInView() -> CGFloat {
+    public var keyboardBottomLayoutGuideLength: CGFloat {
         if let endFrame = self.keyboardEndFrameInView()
             where endFrame.minY < self.view.frame.height  {
             return self.view.frame.height - endFrame.minY
