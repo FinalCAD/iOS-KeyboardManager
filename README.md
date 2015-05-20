@@ -31,9 +31,10 @@ func keyboardDidAppear(animated: Bool)
 func keyboardWillDisappear(animated: Bool)
 func keyboardDidDisappear(animated: Bool)
 
+(UIViewController Only):
 func keyboardBottomLengthInView() -> CGFloat
-public func keyboardStartFrameInView() -> CGRect?
-public func keyboardEndFrameInView() -> CGRect?
+func keyboardStartFrameInView() -> CGRect?
+func keyboardEndFrameInView() -> CGRect?
 ```
 
 ######And forget about initiating animations, just use `animateAlongsideWithKeyboard()` like this :
