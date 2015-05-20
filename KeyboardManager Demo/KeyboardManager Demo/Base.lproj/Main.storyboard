@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14E17e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -57,16 +58,40 @@
                                 </constraints>
                                 <blurEffect style="light"/>
                             </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2bl-mO-jpP">
+                                <rect key="frame" x="541" y="20" width="43" height="30"/>
+                                <state key="normal" title="Modal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="F6M-UK-dfm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xag-vD-LH4">
+                                <rect key="frame" x="16" y="20" width="58" height="30"/>
+                                <state key="normal" title="Popover">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="popoverPresentation" popoverAnchorView="xag-vD-LH4" id="0u5-7B-BAa">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2kZ-ff-EPJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KIP-UF-Jol"/>
+                            <constraint firstItem="2bl-mO-jpP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ktv-33-0Zk"/>
                             <constraint firstAttribute="trailing" secondItem="2kZ-ff-EPJ" secondAttribute="trailing" id="NK5-Wa-tsE"/>
                             <constraint firstItem="2kZ-ff-EPJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="OY7-S4-fo5"/>
                             <constraint firstItem="F0C-k5-IKx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RAq-0R-0fC"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2kZ-ff-EPJ" secondAttribute="bottom" id="TJn-WZ-55y"/>
                             <constraint firstAttribute="trailing" secondItem="F0C-k5-IKx" secondAttribute="trailing" id="TVe-SF-xMq"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="F0C-k5-IKx" secondAttribute="bottom" id="c6C-5k-O88"/>
+                            <constraint firstItem="xag-vD-LH4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="erk-8D-XHb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2bl-mO-jpP" secondAttribute="trailing" id="fSy-rj-MS6"/>
+                            <constraint firstItem="xag-vD-LH4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="l8K-cP-bey"/>
                         </constraints>
                     </view>
                     <connections>

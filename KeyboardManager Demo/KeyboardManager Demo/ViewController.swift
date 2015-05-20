@@ -31,11 +31,9 @@ class ViewController: UIViewController {
     override func keyboardWillAppear(animated: Bool) {
         super.keyboardWillAppear(animated)
     
-        self.animateAlongsideWithKeyboard({ keyboard in
-            if let keyboardEndFrame = keyboard.endFrame(inViewController: self) {
-                self.textFieldsViewBottomConstraint.constant = max(0, self.view.frame.height - keyboardEndFrame.minY)
-                self.view.layoutIfNeeded()
-            }
+        self.animateAlongsideWithKeyboard({ _ in
+            self.textFieldsViewBottomConstraint.constant = self.keyboardBottomLengthInView()
+            self.view.layoutIfNeeded()
         })
     }
     
@@ -43,7 +41,7 @@ class ViewController: UIViewController {
         super.keyboardWillDisappear(animated)
         
         self.animateAlongsideWithKeyboard({ _ in
-            self.textFieldsViewBottomConstraint.constant = 0
+            self.textFieldsViewBottomConstraint.constant = self.keyboardBottomLengthInView()
             self.view.layoutIfNeeded()
         })
     }

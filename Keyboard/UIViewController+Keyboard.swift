@@ -59,18 +59,25 @@ public extension UIViewController {
         UIApplication.sharedApplication().keyboard.animateAlongsideWithKeyboard(animations, completion: completion)
     }
     
+    /// Returns the height of the keyboard inside the receiver's view.
+    public func keyboardBottomLengthInView() -> CGFloat {
+        if let endFrame = self.keyboardEndFrameInView()
+            where endFrame.minY < self.view.frame.height  {
+            return self.view.frame.height - endFrame.minY
+        }
+        return 0
+    }
+    
     /// Returns the startFrame of the keyboard inside the view controller's view. This function simply converts the keyboardStartFrame to the view.
     public func keyboardStartFrameInView() -> CGRect? {
-        if let keyboardStartFrame = UIApplication.sharedApplication().keyboard.startFrame
-            where self.isBeingDisplayedAsPopover() == false {
+        if let keyboardStartFrame = UIApplication.sharedApplication().keyboard.startFrame {
             return self.view.convertRect(keyboardStartFrame, fromView: nil)
         }
         return nil
     }
     /// Returns the endFrame of the keyboard inside the view controller's view. This function simply converts the keyboardEndFrame to the view.
     public func keyboardEndFrameInView() -> CGRect? {
-        if let keyboardEndFrame = UIApplication.sharedApplication().keyboard.endFrame
-            where self.isBeingDisplayedAsPopover() == false {
+        if let keyboardEndFrame = UIApplication.sharedApplication().keyboard.endFrame {
             return self.view.convertRect(keyboardEndFrame, fromView: nil)
         }
         return nil

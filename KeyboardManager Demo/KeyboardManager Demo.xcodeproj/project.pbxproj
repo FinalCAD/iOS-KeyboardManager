@@ -16,7 +16,6 @@
 		174993121A97B88E00C85D44 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1749930F1A97B88E00C85D44 /* Keyboard.swift */; };
 		174993131A97B88E00C85D44 /* UIPresentationController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174993101A97B88E00C85D44 /* UIPresentationController+Keyboard.swift */; };
 		174993141A97B88E00C85D44 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174993111A97B88E00C85D44 /* UIViewController+Keyboard.swift */; };
-		179048951B00F39300DD0359 /* UIViewController+PopoverDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179048941B00F39300DD0359 /* UIViewController+PopoverDetection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +42,6 @@
 		1749930F1A97B88E00C85D44 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		174993101A97B88E00C85D44 /* UIPresentationController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPresentationController+Keyboard.swift"; sourceTree = "<group>"; };
 		174993111A97B88E00C85D44 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
-		179048941B00F39300DD0359 /* UIViewController+PopoverDetection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+PopoverDetection.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +125,6 @@
 				1749930F1A97B88E00C85D44 /* Keyboard.swift */,
 				174993101A97B88E00C85D44 /* UIPresentationController+Keyboard.swift */,
 				174993111A97B88E00C85D44 /* UIViewController+Keyboard.swift */,
-				179048941B00F39300DD0359 /* UIViewController+PopoverDetection.swift */,
 			);
 			name = Keyboard;
 			path = ../Keyboard;
@@ -235,7 +232,6 @@
 			files = (
 				174993141A97B88E00C85D44 /* UIViewController+Keyboard.swift in Sources */,
 				174993131A97B88E00C85D44 /* UIPresentationController+Keyboard.swift in Sources */,
-				179048951B00F39300DD0359 /* UIViewController+PopoverDetection.swift in Sources */,
 				174992F11A97B86900C85D44 /* ViewController.swift in Sources */,
 				174993121A97B88E00C85D44 /* Keyboard.swift in Sources */,
 				174992EF1A97B86900C85D44 /* AppDelegate.swift in Sources */,
