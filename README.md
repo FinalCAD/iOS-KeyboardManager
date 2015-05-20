@@ -7,34 +7,34 @@ Well, the "Keyboard" class is made for you.
 ######Keyboard provides some useful infos :
 	
 ```swift
-var visible: Bool (readonly)
-var window: UIWindow? (readonly)
+var visible: Bool { get }
+var window: UIWindow? { get }
 
-var startFrame: CGRect? (readonly)
-func startFrame(inViewController vc: UIViewController) -> CGRect?
-func startFrame(inView view: UIView?) -> CGRect?
+var startFrame: CGRect? { get }
+func startFrame(inViewController vc: UIViewController) -> CGRect?{}
+func startFrame(inView view: UIView?) -> CGRect?{}
 
-var endFrame: CGRect? (readonly)
-func endFrame(inViewController vc: UIViewController) -> CGRect?
-func endFrame(inView view: UIView?) -> CGRect?
+var endFrame: CGRect? { get }
+func endFrame(inViewController vc: UIViewController) -> CGRect?{}
+func endFrame(inView view: UIView?) -> CGRect?{}
 
-var animationDuration: Double? (readonly)
-var animationCurve: UIViewAnimationCurve? (readonly)
-var animationOptions: UIViewAnimationOptions? (readonly)
+var animationDuration: Double? { get }
+var animationCurve: UIViewAnimationCurve? { get }
+var animationOptions: UIViewAnimationOptions? { get }
 ```
 
 ######`UIViewController` & `UIPresentationController` are extended to implement these methods :
 	
 ```Swift
-func keyboardWillAppear(animated: Bool)
-func keyboardDidAppear(animated: Bool)
-func keyboardWillDisappear(animated: Bool)
-func keyboardDidDisappear(animated: Bool)
+func keyboardWillAppear(animated: Bool){}
+func keyboardDidAppear(animated: Bool){}
+func keyboardWillDisappear(animated: Bool){}
+func keyboardDidDisappear(animated: Bool){}
 
-(UIViewController Only):
-func keyboardBottomLengthInView() -> CGFloat
-func keyboardStartFrameInView() -> CGRect?
-func keyboardEndFrameInView() -> CGRect?
+// (UIViewController Only):
+var keyboardBottomLayoutGuideLength: CGFloat { get }
+func keyboardStartFrameInView() -> CGRect?{}
+func keyboardEndFrameInView() -> CGRect?{}
 ```
 
 ######And forget about initiating animations, just use `animateAlongsideWithKeyboard()` like this :
