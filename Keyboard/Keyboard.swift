@@ -151,8 +151,11 @@ public class Keyboard {
         self.canAnimationAlongside = true
         
         // Call keyboardWillAppear(animated:) on rootViewController
-        self.window?.rootViewController?.keyboardWillAppear(self.animationDuration != nil)
-        self.animateAlongsideWithKeyboardIfNeeded()
+        // dispatch_async() fixes https://github.com/FinalCAD/iOS-KeyboardManager/issues/2
+        dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+            self.window?.rootViewController?.keyboardWillAppear(self.animationDuration != nil)
+            self.animateAlongsideWithKeyboardIfNeeded()
+        }
     }
     
     @objc private func keyboardDidShow(n: NSNotification) {
