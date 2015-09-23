@@ -106,7 +106,7 @@ public class Keyboard {
     Gives you the opportunity to execute animations alongside with the keyboard.
     Calling this function outside a keyboardWillShow / keyboardWillHide notification has no effect.
     
-    :returns: True if the animation & completion closures are accepted
+    - returns: True if the animation & completion closures are accepted
     */
     public func animateAlongsideWithKeyboard(animations: KeyboardAnimation, completion: KeyboardAnimationCompletion? = nil) -> Bool {
         if self.canAnimationAlongside == true {

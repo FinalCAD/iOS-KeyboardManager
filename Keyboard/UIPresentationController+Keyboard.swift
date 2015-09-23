@@ -51,7 +51,7 @@ private extension UIView {
         if self.isFirstResponder() == true {
             return self
         } else {
-            for subview in self.subviews as! [UIView] {
+            for subview in self.subviews {
                 return subview.findFirstResponder()
             }
         }
