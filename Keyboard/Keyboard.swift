@@ -29,11 +29,11 @@ public class Keyboard {
     public var enabled: Bool = false {
         didSet {
             if self.enabled == true {
-                NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-                NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(Keyboard.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(Keyboard.keyboardDidShow(_:)), name: UIKeyboardDidShowNotification, object: nil)
                 
-                NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
-                NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(Keyboard.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(Keyboard.keyboardDidHide(_:)), name: UIKeyboardDidHideNotification, object: nil)
             } else {
                 NSNotificationCenter.defaultCenter().removeObserver(self)
             }
