@@ -20,30 +20,28 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
     //MARK : - Edition
     @IBOutlet var titleField: UITextField!
     @IBOutlet var descriptionField: UITextField!
     @IBOutlet private var textFieldsViewBottomConstraint: NSLayoutConstraint!
-    
-    //MARK: - Keyboard Management
-    
-    override func keyboardWillAppear(animated: Bool) {
+
+    // MARK: - Keyboard Management
+
+    override func keyboardWillAppear(_ animated: Bool) {
         super.keyboardWillAppear(animated)
-    
+
         self.animateAlongsideWithKeyboard({ _ in
             self.textFieldsViewBottomConstraint.constant = self.keyboardBottomLayoutGuideLength
             self.view.layoutIfNeeded()
         })
     }
-    
-    override func keyboardWillDisappear(animated: Bool) {
+
+    override func keyboardWillDisappear(_ animated: Bool) {
         super.keyboardWillDisappear(animated)
-        
+
         self.animateAlongsideWithKeyboard({ _ in
             self.textFieldsViewBottomConstraint.constant = self.keyboardBottomLayoutGuideLength
             self.view.layoutIfNeeded()
         })
     }
 }
-

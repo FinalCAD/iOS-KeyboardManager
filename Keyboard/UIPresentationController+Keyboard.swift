@@ -12,14 +12,14 @@ public extension UIPresentationController {
     */
     public func keyboardWillAppear(animated: Bool) {
     }
-    
+
     /** Called by the Keyboard when UIKeyboardDidShowNotification has been called. The 'animated' value depends if the keyboard did receive a duration when UIKeyboardWillShowNotification has been called earlier.
     
     Default implementation does nothing.
     */
     public func keyboardDidAppear(animated: Bool) {
     }
-    
+
     /** Called by the Keyboard when UIKeyboardWillHideNotification has been called. The 'animated' value depends if the keyboard did receive a duration in the userInfo.
     
     Default implementation does nothing.
@@ -27,28 +27,27 @@ public extension UIPresentationController {
     */
     public func keyboardWillDisappear(animated: Bool) {
     }
-    
+
     /** Called by the Keyboard when UIKeyboardDidHideNotification has been called. The 'animated' value depends if the keyboard did receive a duration when UIKeyboardWillHideNotification has been called earlier.
     
     Default implementation does nothing.
     */
     public func keyboardDidDisappear(animated: Bool) {
     }
-    
+
     /**
     Gives you the opportunity to execute animations alongside with the keyboard.
     Calling this function outside a keyboardWillAppear / keyboardWillDisappear function has no effect.
     */
-    public func animateAlongsideWithKeyboard(animations: KeyboardAnimation, completion: KeyboardAnimationCompletion? = nil) {
-        UIApplication.sharedApplication().keyboard.animateAlongsideWithKeyboard(animations, completion: completion)
+    public func animateAlongsideWithKeyboard(animations: @escaping KeyboardAnimation, completion: KeyboardAnimationCompletion? = nil) {
+        UIApplication.shared.keyboard.animateAlongsideWithKeyboard(animations, completion: completion)
     }
-    
-}
 
+}
 
 private extension UIView {
     private func findFirstResponder() -> UIResponder? {
-        if self.isFirstResponder() == true {
+        if self.isFirstResponder == true {
             return self
         } else {
             for subview in self.subviews {
